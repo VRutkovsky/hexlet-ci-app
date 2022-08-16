@@ -15,8 +15,8 @@ jobs:
       - run: npm test
       # SNYK анализ на уязвимости
       - uses: snyk/actions/node@master
-          env:
-            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       # установка и тесты приложения ci-app
       - run: make start
       - run: make test
