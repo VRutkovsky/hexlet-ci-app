@@ -11,13 +11,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm ci
-      - run: npm test
+          cache: 'npm'
+      # установка и тесты приложения ci-app
+      - run: make test
+      - run: make lint
       # SNYK анализ на уязвимости
       - uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      # установка и тесты приложения ci-app
-      - run: make start
-      - run: make test
-      - run: make lint
